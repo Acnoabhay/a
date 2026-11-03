@@ -48,6 +48,26 @@ header{background:rgba(247,249,252,.68);backdrop-filter:blur(22px) saturate(155%
 section{border-color:rgba(118,139,166,.16)}
 @keyframes soft-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.hero h1{animation:none}.portrait img,.photos img,.work,.btn{transition:none}}
+
+/* Subtle glass details + gentle reveal motion */
+.navlinks a{padding:8px 11px;border-radius:999px;transition:background .25s,color .25s}
+.navlinks a:hover{background:rgba(255,255,255,.72);color:var(--accent)}
+.portrait{padding:9px;border:1px solid rgba(255,255,255,.78);border-radius:15px;background:linear-gradient(145deg,rgba(255,255,255,.72),rgba(225,234,247,.24));box-shadow:0 18px 55px rgba(50,69,101,.08);backdrop-filter:blur(12px)}
+.portrait img{border-radius:9px}
+.eyebrow{letter-spacing:.16em}
+.section-head{position:relative}
+.work{backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.fact{padding:12px;border:1px solid rgba(255,255,255,.62);border-radius:9px;background:rgba(255,255,255,.34);backdrop-filter:blur(10px)}
+.milestone{padding:16px;border-radius:0 0 10px 10px;background:linear-gradient(180deg,rgba(255,255,255,.4),rgba(255,255,255,0));}
+.vss{backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.textlink{border-bottom:1px solid rgba(88,120,184,.35);padding-bottom:3px;transition:color .2s,border-color .2s}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+.grid .work:nth-child(2),.photos img:nth-child(2),.timeline .milestone:nth-child(2){transition-delay:.07s}
+.grid .work:nth-child(3),.photos img:nth-child(3),.timeline .milestone:nth-child(3){transition-delay:.13s}
+.grid .work:nth-child(4),.photos img:nth-child(4),.timeline .milestone:nth-child(4){transition-delay:.19s}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
 </style>
 </head>
 <body>
@@ -88,4 +108,20 @@ section{border-color:rgba(118,139,166,.16)}
 <section id="contact"><div class="wrap contact"><div><div class="eyebrow">07 / Contact</div><h2>Have an idea?<br>Let’s talk.</h2><a class="textlink" href="mailto:Acnoabhay@gmail.com">Acnoabhay@gmail.com ↗</a></div><div class="socials"><a href="https://www.instagram.com/acnoabhay/" target="_blank" rel="noopener">Instagram ↗</a><a href="https://github.com/Acnoabhay" target="_blank" rel="noopener">GitHub ↗</a><a href="https://www.linkedin.com/in/abhay-kumar-abb049400/" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://www.youtube.com/@acnoabhay" target="_blank" rel="noopener">YouTube ↗</a></div></div></section>
 </main>
 <footer class="wrap"><span>© 2026 Abhay Baghel</span><span>Made with intention, in Raipur.</span></footer>
+<script>
+(() => {
+  const targets = document.querySelectorAll('section .section-head, section .about-grid, section .grid, section .vss, section .photos, section .timeline, section .contact');
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  targets.forEach(el => el.classList.add('reveal'));
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+  targets.forEach(el => observer.observe(el));
+})();
+</script>
 </body></html>
