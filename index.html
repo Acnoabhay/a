@@ -29,6 +29,25 @@ footer{padding:24px 0 36px;color:var(--muted);font-size:11px;display:flex;justif
 @media(max-width:760px){.wrap{width:min(100% - 36px,var(--max))}.navlinks{gap:14px;font-size:12px}.hero{padding:72px 0 78px;grid-template-columns:1fr;gap:36px;min-height:auto}.hero h1{font-size:clamp(58px,17vw,88px)}.portrait{max-width:440px}.portrait img{aspect-ratio:5/4;object-position:center 30%}.section-head{display:block}.section-head p{margin-top:12px}.about-grid{grid-template-columns:1fr;gap:32px}.grid{grid-template-columns:1fr 1fr}.vss{grid-template-columns:1fr;padding:28px}.vss-note{max-width:none}.photos{grid-template-columns:1fr 1fr}.photos img,.photos img:nth-child(2n){height:190px;margin:0}.timeline{grid-template-columns:1fr 1fr;row-gap:30px}.contact{display:block}.socials{margin-top:28px}}
 @media(max-width:460px){.navlinks a:nth-child(2),.navlinks a:nth-child(3){display:none}.grid{grid-template-columns:1fr}.photos img,.photos img:nth-child(2n){height:160px}.timeline{grid-template-columns:1fr 1fr}.facts{gap:18px 10px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+/* Elegant translucent finish and restrained motion */
+:root{--bg:#f5f6f8;--paper:rgba(255,255,255,.68);--ink:#19212d;--muted:#707b8b;--line:rgba(118,139,166,.18);--accent:#5878b8}
+body{background:radial-gradient(ellipse at 12% 8%,rgba(191,211,239,.34),transparent 34%),radial-gradient(ellipse at 88% 38%,rgba(218,207,239,.28),transparent 30%),var(--bg);background-attachment:fixed}
+header{background:rgba(247,249,252,.68);backdrop-filter:blur(22px) saturate(155%);-webkit-backdrop-filter:blur(22px) saturate(155%);border-bottom:1px solid rgba(255,255,255,.72);box-shadow:0 8px 28px rgba(39,57,82,.045)}
+.btn{border-color:rgba(75,101,143,.28);background:rgba(255,255,255,.42);transition:transform .28s,box-shadow .28s,background .28s}
+.btn.primary{background:linear-gradient(135deg,#243b5c,#5878b8);border-color:transparent;box-shadow:0 8px 22px rgba(65,94,145,.18)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(65,94,145,.14)}
+.hero h1{animation:soft-rise .85s cubic-bezier(.2,.75,.25,1) both}
+.portrait img{box-shadow:0 24px 70px rgba(45,62,88,.13);transition:transform .7s cubic-bezier(.2,.75,.25,1),filter .5s}
+.portrait:hover img{transform:translateY(-5px) scale(1.012);filter:saturate(.96)}
+.work{background:rgba(255,255,255,.58);border:1px solid rgba(255,255,255,.82);box-shadow:0 8px 28px rgba(47,67,96,.035);border-radius:12px;transition:transform .3s,border-color .3s,box-shadow .3s}
+.work:hover{transform:translateY(-6px);border-color:rgba(88,120,184,.32);box-shadow:0 18px 42px rgba(47,67,96,.09)}
+.vss{background:linear-gradient(125deg,rgba(24,35,53,.97),rgba(44,61,88,.94));border:1px solid rgba(255,255,255,.12);border-radius:16px;box-shadow:0 24px 60px rgba(30,45,68,.14)}
+.photos img{border-radius:10px;box-shadow:0 8px 26px rgba(47,67,96,.08);transition:transform .55s cubic-bezier(.2,.75,.25,1),box-shadow .4s,filter .4s;filter:saturate(.88)}
+.photos img:hover{transform:translateY(-5px) scale(1.015);box-shadow:0 18px 38px rgba(47,67,96,.15);filter:saturate(1.04)}
+.fact,.milestone{transition:transform .3s}.fact:hover,.milestone:hover{transform:translateY(-3px)}
+section{border-color:rgba(118,139,166,.16)}
+@keyframes soft-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.hero h1{animation:none}.portrait img,.photos img,.work,.btn{transition:none}}
 </style>
 </head>
 <body>
